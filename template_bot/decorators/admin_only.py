@@ -11,7 +11,7 @@ def admin_only(func: Callable) -> Callable:
         else:
             from_user = message
 
-        if bot.is_admin(from_user.id):
+        if bot.user_manager.is_admin(from_user.id):
             func(message, bot)
         else:
             not_admin(message, bot)

@@ -47,7 +47,7 @@ def _blacklist(message: types.Message, bot: TeleBot) -> None:
 
 def blacklist(message: types.Message, bot: TeleBot, number: int | str) -> None:
     log_cmd(message, "blacklist 3")
-    bot.user_storage.blacklist(number, message.text)
+    bot.user_manager.blacklist(number, message.text)
     user_logger.info(
         f"Admin {message.from_user.first_name} {message.from_user.last_name} [{message.from_user.id}] blocked {number}, reason: {message.text}"
     )

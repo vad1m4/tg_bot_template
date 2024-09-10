@@ -24,7 +24,7 @@ def _unblacklist(message: types.Message, bot: TeleBot) -> None:
 def unblacklist(message: types.Message, bot: TeleBot) -> None:
     log_cmd(message, "unblacklist 2")
     number = message.text
-    if bot.user_storage.unblacklist(number):
+    if bot.user_manager.unblacklist(number):
         bot.send_message(
             message.from_user.id,
             f"✅ Успішно розблоковано {number}",

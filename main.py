@@ -8,7 +8,7 @@ from template_bot.application import Application
 from template_bot.logger.logger import setup_logging
 
 # time
-from template_bot.time.time import get_date, get_time
+from template_bot.utils import get_date, get_time
 
 ### global_vars
 import template_bot.global_vars as gv
@@ -33,7 +33,6 @@ from template_bot.funcs.handle_other import handle_other
 
 ### admin
 from template_bot.admin_commands.menu import menu
-from template_bot.admin_commands.not_admin import not_admin
 from template_bot.admin_commands.blacklist import _blacklist_
 from template_bot.admin_commands.unblacklist import _unblacklist
 from template_bot.admin_commands.announce import _announce

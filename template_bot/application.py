@@ -1,12 +1,8 @@
 from telebot import TeleBot  # type: ignore
 
-from template_bot.storage.storage import JSONFileUserStorage
+from template_bot.storage.user_storage import JSONFileUserStorage
 from template_bot.exception_handler.exception_handler import TGEBExceptionHandler
-from template_bot.time.time import get_date, get_unix
-from template_bot.commands.start import start
-
-# from electricity_bot.logger import add_logger
-from template_bot.config import admins
+from template_bot.user_manager import UserManager
 
 from pathlib import Path
 
@@ -33,14 +29,7 @@ class Application(TeleBot):
         self.user_storage = JSONFileUserStorage(Path.cwd() / "users.json")
         logger.info("Storage initialized")
 
+        self.user_manager = UserManager(self.user_storage)
+
         self.chunks: dict = {}
         logger.info("All services have been initalized successfully")
-        ### User commands
-
-    ### Check if user_id is in self.admins
-
-    def is_admin(self, user_id: int) -> bool:
-        if not user_id in admins:
-            return False
-        else:
-            return True

@@ -11,7 +11,7 @@ def authorized_only(func: Callable) -> Callable:
         else:
             from_user = message
 
-        if bot.user_storage.is_authorized(from_user.id):
+        if bot.user_manager.is_authorized(from_user.id):
             func(message, bot)
         else:
             not_authorized(message, bot)
